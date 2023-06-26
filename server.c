@@ -1,4 +1,7 @@
-#include "minitalk.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <signal.h>
+#include "libft/libft.h"
 
 static void joli_talk(int pid)
 {
