@@ -1,8 +1,10 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
+# include <stdio.h>
 # include <stdarg.h>
 # include <limits.h>
 
@@ -19,4 +21,6 @@ int	print_hexa_min(unsigned long long nb);
 int	print_hexa_maj(unsigned int nb);
 int	print_percent(void);
 
-#	endif
+int		ft_atoi(const char *nptr);
+
+#endif
