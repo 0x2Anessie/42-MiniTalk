@@ -1,16 +1,11 @@
-NAME = minitalk.a
+NAME_SERVER = server
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar crs
-RM = rm -f
 
-SRCS = client.c server.c
-
-OBJS = $(SRCS:%.c=%.o)
-
-$(NAME): $(OBJS)
-	$(AR) $@ $^
+$(NAME_SERVER): 
+	make -C libft/ && mv libft/libft.a .
+	$(CC) -o $(NAME_SERVER) server.c libft.a
 	@clear
 	@echo "   _____  .__       .__  __         .__   __    ";
 	@echo "  /     \ |__| ____ |__|/  |______  |  | |  | __ ";
@@ -20,14 +15,27 @@ $(NAME): $(OBJS)
 	@echo "        \/        \/              \/          \/ ";
 
 all:
-	$(NAME)
+	$(NAME_SERVER)
 
 clean:
-	$(RM) $(OBJS)
+	make clean -C libft/
+	@clear
+	@echo "         /\               __             .__                         ";
+	@echo "  ____   )/____   _______/  |_      ____ |  |   ____  _____    ____   ";
+	@echo "_/ ___\  _/ __ \ /  ___/\   __\   _/ ___\|  | _/ __ \ \__  \  /    \  ";
+	@echo "\  \___  \  ___/ \___ \  |  |     \  \___|  |_\  ___/ / __  \|   |  \ ";
+	@echo " \____ >  \____ >_____ > |__|      \____ >____/\____> ____  / ___|  / ";
+	@echo "                                                          \/      \/  ";
 
 fclean: clean
-	$(RM) $(NAME)
-
+	rm -f $(NAME_SERVER) libft.a
+	@clear
+	@echo "         /\               __        _____      .__                         ";
+	@echo "  ____   )/____   _______/  |_    _/ ____\____ |  |   ____  _____    ____   ";
+	@echo "_/ ___\  _/ __ \ /  ___/\   __\   \   __\/ ___\|  | _/ __ \ \__  \  /    \  ";
+	@echo "\  \___  \  ___/ \___ \  |  |      |  | \  \___|  |_\  ___/  / __ \|   |  \ ";
+	@echo " \____ >  \____> _____ > |__|      |__|  \____ >____/\____ > ____  /___|  / ";
+	@echo "                                                                 \/     \/  ";
 re: fclean all
 
 .PHONY: all clean fclean re
