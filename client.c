@@ -46,10 +46,11 @@ int	main(int argc, char **argv)
     pid = ft_atoi(argv[1]);
     while (argv[2][i])
     {
-        convert_and_send(pid, argv[2][i]);
+        convert_and_send_signal(pid, argv[2][i]);
         i++;
     }
     if (argv[2][i] == '\0')
 		ft_printf("Message envoye :)");
     return(0);
 }
+
